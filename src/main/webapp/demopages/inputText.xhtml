@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/emptyPage.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content" >
+        <h1>inputText Demo</h1>
+        <p:panel id="panel3" >
+
+            <h:panelGrid columns="4" cellpadding="5">
+                <h:outputLabel value="Eingabefeld" />
+                <h:outputText value="#{demoController.inputTextDemoRB.inputText01}" />
+                <p:inputText id="inpuTextID" value="#{demoController.inputTextDemoRB.inputText01}" required="true" 
+                             requiredMessage="#{msg.mandatoryField}" />
+                <p:message for="inpuTextID" display="text"/>
+
+            </h:panelGrid>
+
+            <p:commandButton value="Submit" id="submitActionID" update="panel3"   actionListener="#{demoController.doSomething}"   />
+
+            <p:defaultCommand target="submitActionID" />
+
+        </p:panel>        
+
+    </ui:define>
+</ui:composition>

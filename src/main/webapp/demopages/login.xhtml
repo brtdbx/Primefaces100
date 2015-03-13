@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/emptyPage.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content" >
+        <h1>Welcome</h1>
+        <p:panel id="panel3" >
+
+            <h3>Please login ... (with usr/usr)</h3>
+
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel value="User" />
+                <p:inputText id="user" value="#{loginControllerVB.loginVB.user}" required="true" 
+                             requiredMessage="#{msg.mandatoryField}" />
+                <p:message for="user" display="text"/>
+                <h:outputLabel value="Password" />
+                <p:password id="pwd" value="#{loginControllerVB.loginVB.pwd}"  required="true" 
+                            requiredMessage="#{msg.mandatoryField}" />
+                <p:message for="pwd" display="text" />
+            </h:panelGrid>
+
+            <p:commandButton value="Submit" id="loginCmdID" update="panel3" 
+                             actionListener="#{loginControllerVB.doSomething()}" 
+                             action="#{loginControllerVB.nextPage()}" 
+                             ajax="false"  />
+            <!--                must change to nextPage with ajax = false to get the selectOne boxes
+                                be in correct size?!-->
+            <p:defaultCommand target="loginCmdID" />
+
+
+            <h:panelGrid columns="1" cellpadding="5">
+                <h:outputLabel value="#{loginControllerVB.sorryMessage()}" />
+                <p:messages for="loginCmdID" showDetail="true" showSummary="false" autoUpdate="true" closable="true" />
+                <!-- to show all messages: -->
+                <!-- <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />-->
+            </h:panelGrid>            
+
+
+        </p:panel>        
+
+    </ui:define>
+</ui:composition>

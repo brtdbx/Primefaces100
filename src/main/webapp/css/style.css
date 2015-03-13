@@ -1,0 +1,32 @@
+/* 
+    some/ many thems are have too large fonts
+    Theme is too large: see
+        http://forum.primefaces.org/viewtopic.php?f=3&t=3060
+        and
+        http://de.slideshare.net/martyhall/primefaces-tutorial-themes-skins
+*/
+
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 12px !important;
+}
+
+/*
+This is an ugly fix as in my themeswitcher (actually a selectOne component) was not correct rendered
+http://stackoverflow.com/questions/12304816/how-can-i-get-pselectonemenu-to-calculate-its-width-correctly-inside-dialogs
+*/
+
+/* theme 4.0 fix - fixed in pf 5.0
+.ui-selectonemenu label.ui-selectonemenu-label {
+    padding-right: 100%;
+}
+*/
+/*.ui-selectonemenu{
+  width: 100% !important;
+}
+
+.ui-selectonemenu-label{
+     width: 100% !important;
+} 
+*/
+
+

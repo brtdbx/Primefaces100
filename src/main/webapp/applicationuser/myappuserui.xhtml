@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/emptyPage.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content" >
+        <h1>myappuserui</h1>
+        <p:panel id="panel3" >
+
+            
+            
+            
+                    <p:dataTable id="datalist" value="#{applicationuserController.items}" var="item"
+                                 selectionMode="single" selection="#{applicationuserController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplicationuserTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplicationuserTitle_username}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.username}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplicationuserTitle_encryptedpwd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.encryptedpwd}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApplicationuserTitle_personid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.personid}"/>
+                        </p:column>
+                        <f:facet name="footer">
+ </f:facet>
+                    </p:dataTable>
+            
+            
+        </p:panel>        
+
+    </ui:define>
+</ui:composition>

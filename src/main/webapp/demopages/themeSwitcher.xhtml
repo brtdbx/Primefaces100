@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Title</title>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/style.css" />
+    </h:head>
+    <h:body>
+        <h:form id="myForm">
+            <p:panel id="panel3">
+                <h3>Theme switcher</h3>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="current theme:"></h:outputText>
+                    <h:outputText value="current theme: +#{preferredThemeSB.preferredThemeInfo.name}"  ></h:outputText>
+                    
+                    <h:outputText value="current theme: +#{themeSwitcherBean.selectedTheme}"  ></h:outputText>
+                    <h:outputText value="switch to:" />  
+                    <p:themeSwitcher id="themeSwitcherID" style="width:200px" >  
+                        <f:selectItem itemValue="#{themeSwitcherBean.selectedTheme}" />
+                        <f:selectItems value="#{themeSwitcherBean.selectableThemes}" 
+                                       var="t"
+                                       itemLabel="#{t.name}"
+                                       itemValue="#{t.key}"/>  
+                        <p:ajax global="false" listener="#{themeSwitcherBean.saveTheme}" />
+                    </p:themeSwitcher>                    
+                </h:panelGrid>
+            </p:panel>     
+
+        </h:form>
+    </h:body>        
+
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ApplicationuserCreateDlg" widgetVar="ApplicationuserCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateApplicationuserTitle}">
+            <h:form id="ApplicationuserCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{applicationuserControllerNew.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateApplicationuserLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{applicationuserControllerNew.selected.id}" title="#{bundle.CreateApplicationuserTitle_id}" required="true" requiredMessage="#{bundle.CreateApplicationuserRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateApplicationuserLabel_username}" for="username" />
+                        <p:inputText id="username" value="#{applicationuserControllerNew.selected.username}" title="#{bundle.CreateApplicationuserTitle_username}" required="true" requiredMessage="#{bundle.CreateApplicationuserRequiredMessage_username}"/>
+                        <p:outputLabel value="#{bundle.CreateApplicationuserLabel_encryptedpwd}" for="encryptedpwd" />
+                        <p:inputText id="encryptedpwd" value="#{applicationuserControllerNew.selected.encryptedpwd}" title="#{bundle.CreateApplicationuserTitle_encryptedpwd}" required="true" requiredMessage="#{bundle.CreateApplicationuserRequiredMessage_encryptedpwd}"/>
+                        <p:outputLabel value="#{bundle.CreateApplicationuserLabel_personid}" for="personid" />
+                        <p:selectOneMenu id="personid" value="#{applicationuserControllerNew.selected.personid}" required="true" requiredMessage="#{bundle.EditApplicationuserRequiredMessage_personid}">
+                            <f:selectItems value="#{personController.itemsAvailableSelectOne}"
+                                           var="personidItem"
+                                           itemValue="#{personidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{applicationuserControllerNew.createApplicationuser()}" value="#{bundle.Save}" update="display,:ApplicationuserListForm:datalist,:growl" oncomplete="handleSubmit(args,'ApplicationuserCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ApplicationuserCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
