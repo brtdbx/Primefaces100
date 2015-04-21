@@ -13,6 +13,7 @@ import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+
 @Named("applicationuserControllerNew")
 @SessionScoped
 public class ApplicationuserControllerNew implements Serializable {
